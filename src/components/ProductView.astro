@@ -1,0 +1,107 @@
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    gsap.from(".product__card", {
+      opacity: 0,
+      y: 30,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#producto",
+        start: "top 80%",
+      },
+    });
+  });
+</script>
+
+<section class="product section" id="producto">
+  <div class="container">
+    <div class="product__header">
+      <div class="section-label">
+        <span class="dot"></span>
+        Nuestros Servicios
+      </div>
+      <h2>
+        Creamos <span class="text-gradient">experiencias digitales</span> que impactan
+      </h2>
+      <p>
+        Desde landing pages optimizadas hasta aplicaciones complejas, desarrollamos soluciones tecnológicas a medida.
+      </p>
+    </div>
+
+    <div class="product__grid">
+      <div class="product__card">
+        <div class="product__icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-template"><rect width="18" height="7" x="3" y="3" rx="1"/><rect width="9" height="7" x="3" y="14" rx="1"/><rect width="5" height="7" x="16" y="14" rx="1"/></svg>
+        </div>
+        <h3>Landing Pages</h3>
+        <p>
+          Diseñadas para maximizar conversiones y captar clientes potenciales desde el primer segundo.
+        </p>
+      </div>
+      <div class="product__card">
+        <div class="product__icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3>Sitios Web & E-commerce</h3>
+        <p>Presencia digital robusta y profesional para escalar tus ventas y autoridad de marca.</p>
+      </div>
+      <div class="product__card">
+        <div class="product__icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <h3>Apps Móviles & Desktop</h3>
+        <p>Desarrollo de aplicaciones nativas y progresivas con la mejor experiencia de usuario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product {
+    background: linear-gradient(
+      180deg,
+      var(--blue-mid) 0%,
+      var(--blue-dark) 100%
+    );
+    padding: 5rem 0;
+  }
+
+  .product__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .product__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .product__card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .product__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .product__card img {
+    max-width: 100%;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+  }
+</style>

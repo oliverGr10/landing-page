@@ -1,0 +1,231 @@
+---
+---
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="/" class="navbar__logo" aria-label="MISTHEC">
+      <img src="/images/logo_0001.png" alt="MISTHEC" class="navbar__logo-img" />
+      <span class="logo-text">MISTHEC</span>
+    </a>
+
+    <nav class="navbar__nav" role="navigation" aria-label="Navegación principal">
+      <a href="#beneficios">Beneficios</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#producto">Producto</a>
+      <a href="#testimonios">Testimonios</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <a href="#contacto" class="btn btn-primary btn--sm">Solicitar cotización</a>
+    </div>
+
+    <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="navbar__mobile" id="mobileMenu" aria-hidden="true">
+    <nav>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#producto">Producto</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#contacto" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem">Solicitar cotización</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0.85rem 0;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 14, 26, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.4);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.navbar__logo:hover {
+  opacity: 0.85;
+}
+
+.navbar__logo-img {
+  display: block;
+  height: 34px;
+  max-height: 34px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(155, 109, 255, 0.4));
+}
+
+.logo-text {
+  background: linear-gradient(135deg, #fff 0%, #9b6dff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: auto;
+}
+
+.navbar__nav a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s;
+  position: relative;
+}
+
+.navbar__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--purple-light);
+  transition: width 0.3s;
+}
+
+.navbar__nav a:hover { color: var(--white); }
+.navbar__nav a:hover::after { width: 100%; }
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn--sm {
+  padding: 0.55rem 1.2rem;
+  font-size: 0.875rem;
+}
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.navbar__hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar__hamburger.active span:nth-child(2) { opacity: 0; }
+.navbar__hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.navbar__mobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(10,14,26,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 1.5rem;
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.navbar__mobile.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.navbar__mobile nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.navbar__mobile nav a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white-dim);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.2s;
+}
+
+.navbar__mobile nav a:last-child {
+  border-bottom: none;
+}
+
+.navbar__mobile nav a:hover { color: var(--white); }
+
+@media (max-width: 900px) {
+  .navbar__nav,
+  .navbar__actions { display: none; }
+  .navbar__hamburger { display: flex; }
+  .navbar__mobile { display: block; }
+}
+</style>
+
+<script>
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+window.addEventListener('scroll', () => {
+  navbar?.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+hamburger?.addEventListener('click', () => {
+  const isOpen = mobileMenu?.classList.toggle('open');
+  hamburger.classList.toggle('active', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+  mobileMenu?.setAttribute('aria-hidden', String(!isOpen));
+});
+
+mobileMenu?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger?.classList.remove('active');
+  });
+});
+</script>

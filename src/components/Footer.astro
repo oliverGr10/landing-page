@@ -1,0 +1,293 @@
+<footer class="footer">
+  <div class="container footer__container">
+
+    <!-- Top section -->
+    <div class="footer__top">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="MISTHEC">
+          <img src="/images/logo_0001.png" alt="MISTHEC Logo" class="footer__logo-img" />
+          <span class="footer__logo-text">MISTHEC</span>
+        </a>
+        <p class="footer__tagline">Tecnología de punta para el sur del Perú.<br/>Innovación desde Arequipa.</p>
+        <div class="footer__socials">
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav columns -->
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4 class="footer__col-title">Plataforma</h4>
+          <nav>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#producto">Producto</a>
+            <a href="#testimonios">Testimonios</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Empresa</h4>
+          <nav>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#blog">Blog</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Contáctanos</h4>
+          <nav>
+            <a href="mailto:hola@misthec.com">hola@misthec.com</a>
+            <a href="#contacto" class="footer__cta-link">Solicitar cotización →</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__divider"></div>
+
+    <div class="footer__bottom">
+      <p>© {new Date().getFullYear()} MISTHEC. Todos los derechos reservados.</p>
+      <div class="footer__bottom-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #06080f;
+    padding: 64px 0 28px;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle glow background */
+  .footer::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 200px;
+    background: radial-gradient(ellipse at center, rgba(108, 63, 197, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .footer__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+
+  /* ---- Top ---- */
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    margin-bottom: 40px;
+    align-items: start;
+  }
+
+  /* ---- Brand ---- */
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 280px;
+  }
+
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    width: fit-content;
+  }
+
+  .footer__logo:hover { opacity: 0.8; }
+
+  .footer__logo-img {
+    display: block;
+    height: 36px;
+    max-height: 36px;
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 8px rgba(155, 109, 255, 0.35));
+  }
+
+  .footer__logo-text {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #9b6dff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer__tagline {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+
+  /* ---- Socials ---- */
+  .footer__socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 0.25rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.5);
+    transition: all 0.25s ease;
+  }
+
+  .social-link:hover {
+    background: rgba(155,109,255,0.15);
+    border-color: rgba(155,109,255,0.4);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ---- Nav Columns ---- */
+  .footer__cols {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 120px;
+  }
+
+  .footer__col-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.25rem;
+  }
+
+  .footer__col nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer__col nav a {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    transition: color 0.2s;
+    line-height: 1.4;
+  }
+
+  .footer__col nav a:hover { color: var(--white); }
+
+  .footer__cta-link {
+    color: var(--purple-light) !important;
+    font-weight: 500 !important;
+  }
+
+  .footer__cta-link:hover {
+    color: #b894ff !important;
+  }
+
+  /* ---- Divider ---- */
+  .footer__divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+    margin-bottom: 24px;
+  }
+
+  /* ---- Bottom ---- */
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__bottom p {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.82rem;
+  }
+
+  .footer__bottom-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer__bottom-links a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.3);
+    transition: color 0.2s;
+  }
+
+  .footer__bottom-links a:hover { color: rgba(255,255,255,0.6); }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 900px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__brand {
+      max-width: 100%;
+    }
+
+    .footer__cols {
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer {
+      padding: 48px 0 24px;
+    }
+
+    .footer__cols {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+  }
+</style>

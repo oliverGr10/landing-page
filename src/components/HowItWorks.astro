@@ -1,0 +1,370 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Estrategia Digital",
+    description:
+      "Analizamos tu negocio y objetivos para definir la arquitectura y el diseño perfecto que tu marca necesita.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+    image: "/images/photo-1558655146-d09347e92766.avif",
+  },
+  {
+    number: "02",
+    title: "Desarrollo a Medida",
+    description:
+      "Nuestro equipo de expertos construye tu solución utilizando las tecnologías más avanzadas para un rendimiento óptimo.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>`,
+    image: "/images/photo-1507238691740-187a5b1d37b8.avif",
+  },
+  {
+    number: "03",
+    title: "Lanzamiento y Optimización",
+    description:
+      "Desplegamos tu proyecto y realizamos un seguimiento continuo para asegurar que alcance el máximo de su potencial.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rocket"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.13 0-2.97l-3-3Z"/><path d="M7 15s1.95-1.83 2-2c1.9-1.9 3.05-5.32 3-8-2.5-.5-13.5 10.5-13 13.5 1.15.22 1.62-.22 2.5-.5Z"/><path d="M12 5s2.5 0 5 2.5c2.5 2.5 2.5 5 2.5 5l-5.5 5.5-2-2-4.5 4.5h-4l3-3 2-2 1.5-1.5Z"/><path d="M15 13 9 7"/><path d="M18.22 4.02a2.1 2.1 0 1 1 2.97 2.97L15 13l-3-3 6.22-5.98Z"/></svg>`,
+    image: "/images/photo-1467232004584-a241de8bcf5d.avif",
+  },
+];
+---
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    gsap.from("#howHeader", {
+      opacity: 0,
+      y: -20,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#como-funciona",
+        start: "top 80%",
+      },
+    });
+
+    gsap.from(".how__step", {
+      opacity: 0,
+      y: 30,
+      stagger: 0.3,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#howSteps",
+        start: "top 80%",
+      },
+    });
+
+    gsap.from("#connectorLine", {
+      scaleY: 0,
+      transformOrigin: "top center",
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#howSteps",
+        start: "top 80%",
+      },
+    });
+  });
+</script>
+
+<section class="how section" id="como-funciona">
+  <div class="container">
+    <div class="how__header" id="howHeader">
+      <div class="section-label">
+        <span class="dot"></span>
+        Nuestro Proceso
+      </div>
+      <h2>
+        Del concepto a la <span class="text-gradient">realidad digital</span>
+      </h2>
+      <p>
+        Un camino claro y profesional para llevar tu idea al siguiente nivel.<br
+          class="hide-mobile"
+        /> Sin complicaciones, con resultados garantizados.
+      </p>
+    </div>
+
+    <div class="how__steps" id="howSteps">
+      {
+        steps.map((step, i) => (
+          <div
+            class={`how__step ${i % 2 === 1 ? "how__step--reverse" : ""}`}
+            data-step={i}
+          >
+            <div class="step__content">
+              <div class="step__number">{step.number}</div>
+              <div class="step__icon" set:html={step.icon} />
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+              {i === steps.length - 1 && (
+                <a href="#comenzar" class="btn btn-primary step__cta">
+                  Comenzar ahora
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              )}
+            </div>
+
+            <div class="step__visual">
+              <div class="step__img-wrapper">
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="step__img-overlay" />
+              </div>
+              <div class="step__badge">
+                <span class="step__badge-number">{step.number}</span>
+                <span>{step.title}</span>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+
+      <!-- Connector line -->
+      <div class="how__connector">
+        <div class="connector__line" id="connectorLine"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how {
+    background: var(--blue-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how::before {
+    content: "";
+    position: absolute;
+    right: -200px;
+    top: 0;
+    bottom: 0;
+    width: 600px;
+    background: radial-gradient(
+      ellipse,
+      rgba(108, 63, 197, 0.06) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .how__header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .how__header h2 {
+    margin-bottom: 1rem;
+  }
+  .how__header p {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #9b6dff 0%, #6c3fc5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .how__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    position: relative;
+  }
+
+  .how__step {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .how__step--reverse {
+    direction: rtl;
+  }
+
+  .how__step--reverse > * {
+    direction: ltr;
+  }
+
+  .step__content {
+    max-width: 480px;
+  }
+
+  .step__number {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(
+      135deg,
+      rgba(155, 109, 255, 0.15) 0%,
+      rgba(108, 63, 197, 0.05) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: -1.5rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.04em;
+  }
+
+  .step__icon {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(
+      135deg,
+      rgba(108, 63, 197, 0.2),
+      rgba(26, 58, 143, 0.2)
+    );
+    border: 1px solid rgba(108, 63, 197, 0.3);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--purple-light);
+    padding: 13px;
+    margin-bottom: 1.25rem;
+  }
+
+  .step__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .step__content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+  }
+
+  .step__content p {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .step__cta {
+    margin-top: 0.5rem;
+  }
+
+  .step__visual {
+    position: relative;
+  }
+
+  .step__img-wrapper {
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .step__img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .step__img-wrapper:hover img {
+    transform: scale(1.04);
+  }
+
+  .step__img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(108, 63, 197, 0.1) 0%,
+      transparent 60%
+    );
+  }
+
+  .step__badge {
+    position: absolute;
+    bottom: -16px;
+    right: 24px;
+    background: var(--gradient-btn);
+    border-radius: 100px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(108, 63, 197, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .step__badge-number {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .how__connector {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .connector__line {
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, var(--purple), var(--blue-accent));
+    border-radius: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .how__step,
+    .how__step--reverse {
+      grid-template-columns: 1fr;
+      direction: ltr;
+      gap: 2.5rem;
+    }
+
+    .how__step--reverse .step__content {
+      order: 1;
+    }
+    .how__step--reverse .step__visual {
+      order: 2;
+    }
+
+    .how__connector {
+      display: none;
+    }
+    .how__steps {
+      gap: 4rem;
+    }
+  }
+</style>

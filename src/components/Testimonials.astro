@@ -1,0 +1,100 @@
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    gsap.from(".testimonial__card", {
+      opacity: 0,
+      y: 30,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#testimonios",
+        start: "top 80%",
+      },
+    });
+  });
+</script>
+
+<section class="testimonials section" id="testimonios">
+  <div class="container">
+    <div class="testimonials__header" id="testimonialsHeader">
+      <div class="section-label">
+        <span class="dot"></span>
+        Casos de Éxito
+      </div>
+      <h2>Lo que dicen <span class="text-gradient">nuestros clientes</span></h2>
+      <p>Empresas que han escalado su presencia digital con Misthes.</p>
+    </div>
+
+    <div class="testimonials__grid">
+      <div class="testimonial__card">
+        <p>
+          "Misthes superó todas nuestras expectativas. Nuestra landing page carga al instante y las conversiones se triplicaron en el primer mes."
+        </p>
+        <h3>Ricardo Mendoza</h3>
+        <span>CEO de TechFlow</span>
+      </div>
+      <div class="testimonial__card">
+        <p>
+          "El equipo captó perfectamente la esencia de nuestra marca. La aplicación móvil que desarrollaron es intuitiva y extremadamente rápida."
+        </p>
+        <h3>Elena Rivas</h3>
+        <span>Product Manager</span>
+      </div>
+      <div class="testimonial__card">
+        <p>
+          "Buscábamos un diseño premium y lo encontramos en Misthes. Su proceso es impecable y los resultados técnicos son de primer nivel."
+        </p>
+        <h3>Andrés Silva</h3>
+        <span>Fundador de Nova</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: linear-gradient(
+      180deg,
+      var(--blue-dark) 0%,
+      var(--blue-mid) 100%
+    );
+    padding: 5rem 0;
+  }
+
+  .testimonials__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonial__card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .testimonial__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .testimonial__card p {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+</style>
